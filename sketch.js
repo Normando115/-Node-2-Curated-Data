@@ -195,7 +195,7 @@ function moveDial() {
 
 //text
 function breakfastWords(){
-  if (brkButton = true) {
+textSize(24);
   push();
   translate(width/3,height/2.25);
 rotate(30);
@@ -226,7 +226,7 @@ rotate(270);
 rotate(330);
   text(Breakfast[5], 100 , 0);
   pop();
-}
+
 }
 
 function lunchWords(){
