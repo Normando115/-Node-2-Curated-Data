@@ -6,12 +6,17 @@ let result;
 let brk = [];
 let lch = [];
 let dnr = []
-let poop = false;
+let dnrButton = false;
+let lnchButton = false;
+let brkButton = false;
+
 
 let Breakfast = ['Try Again', 'Eat Out', 'Cereal', 'PBJ', 'Eggs and Bacon', 'Ramen'];
 let Lunch = ['Ramen', 'Fried Rice', 'Spaghetti', 'Curry', ' something new', 'Try again', 'eat out', 'Ubereats', 'ask someone else'];
 let Dinner = ['Ramen', 'Fried Rice', 'Spaghetti', 'Curry', 'something new', 'Try again', 'eat out', 'Ubereats', 'ask someone else'];
 //visible = false;
+
+words = [Breakfast, Lunch, Dinner];
 function preload() {
   for (var i = 0; i < 8; i++) {
     brk[i] = loadImage("Assets/Food" + i + ".jpg");
@@ -23,64 +28,74 @@ function preload() {
     //dnr[i] = loadImage("Assets/Food2" + i + ".jpg");
  // }
 
-
  }
-
+console.log(words);
 
 function setup() {
-  createCanvas(585,585);
-  image(brk[0], 40, 10, 110, 110);
+let canvas = createCanvas(windowWidth*.989, (windowWidth/2));
+canvas.parent('myCanvas');
+//  createCanvas(585,585);
+  image(brk[0], width/3, height/3, width/2,height/3);
   angleMode(DEGREES);
   frameRate(60);
 //Buttons
   buttonSpin = createButton('Spin!');
   buttonSpin.parent('button-holder');
-  buttonSpin.size(width/7,height/13);
-  buttonSpin.position(width/1.25,height/1.1);
+  buttonSpin.size(width*0.1,height*0.05);
+  buttonSpin.position(width*0.75,height*0.85);
   buttonSpin.mousePressed(buttonPressed4);
 
     buttonBreakfast = createButton('Breakfast');
   buttonBreakfast.parent('button-holder');
-    buttonBreakfast.size(width/7,height/13);
-  buttonBreakfast.position(width/6,height/1.1);
+    buttonBreakfast.size(width*0.05,height*0.025);
+  buttonBreakfast.position(width*0.2,height*0.875);
   buttonBreakfast.mousePressed(buttonPressed1);
       buttonLunch = createButton('Lunch');
   buttonLunch.parent('button-holder');
-    buttonLunch.size(width/7,height/13);
-  buttonLunch.position(width/3,height/1.1);
+    buttonLunch.size(width*0.05,height*0.025);
+  buttonLunch.position(width*0.125,height*0.875);
   buttonLunch.mousePressed(buttonPressed2);
       buttonDinner = createButton('Dinner');
   buttonDinner.parent('button-holder');
-    buttonDinner.size(width/7,height/13);
-  buttonDinner.position(width/2,height/1.1);
+    buttonDinner.size(width*0.05,height*0.025);
+  buttonDinner.position(width*0.05,height*0.875);
   buttonDinner.mousePressed(buttonPressed3);
 
 }
 function draw() {
-  background(255);
+  background(0);
+
+//Text
+push();
+fill(255);
+textSize(48);
+text('Food Randomizer', width/2.5, height*0.075);
+pop();
+
+
   //Spinner
   push();
-  translate(width/2,height/2);
+  translate(width/3,height/2.25);
   fill(255);
-  ellipse(0,0, width*0.75)
+  ellipse(0,0, width/3)
   fill(56, 222, 27);
-  arc(0,0, width*0.75, height*0.75, 0 , 60);
+  arc(0,0, width/3, height/1.5, 0 , 60);
   fill(23, 108, 212);
-  arc(0,0, width*0.75, height*0.75, 60 , 120);
+  arc(0,0, width/3, height/1.5, 60 , 120);
   fill(116, 20, 168);
-  arc(0,0, width*0.75, height*0.75, 120 , 180);
+  arc(0,0, width/3, height/1.5, 120 , 180);
   fill(204, 20, 189);
-  arc(0,0, width*0.75, height*0.75, 180 , 240);
+  arc(0,0, width/3, height/1.5, 180 , 240);
   fill(222, 9, 9);
-  arc(0,0, width*0.75, height*0.75, 240 , 300);
+  arc(0,0, width/3, height/1.5, 240 , 300);
   fill(234, 247, 54);
-  arc(0,0, width*0.75, height*0.75, 300 , 360);
+  arc(0,0, width/3, height/1.5, 300 , 360);
   pop();
 
   push();
   fill(50,60,20);
   noStroke();
-  translate(width/2, height/2);
+  translate(width/3,height/2.25);
   rotate(rotVar);
   rectMode(CENTER);
   rect(0, 0, 20, 100);
@@ -88,67 +103,72 @@ function draw() {
   pop();
   push();
   textSize(50)
-    image(brk[5], 40, 10, 110, 110);
+  translate(width/3, height/3) ;
+  //  image(brk[5], 40, 10, 110, 110);
     pop();
+
+
   breakfastWords();//
   //lunchWords();
 //dinnerWords();
-text(result,420,90);
+push();
+fill(255);
+textSize(32);
+textAlign(CENTER);
+text(result,width*0.775, height*0.75);
+pop();
 
 //dinner
-  if(buttonPressed3){
+if(buttonPressed1){
 
+if (rotVar % 360 <= 70) {
+  result = Breakfast[4]+ '(Red)';
+  image(brk[0], width*0.65, height*0.15, width*0.25, height*0.5);
+} else if (rotVar % 360 > 70 && rotVar % 360 <= 130) {
+  result = Breakfast[5]+ '(Yellow)';
+  image(brk[1], width*0.65, height*0.15, width*0.25, height*0.5);
+} else if (rotVar % 360 > 130 && rotVar % 360 <= 190) {
+  result = Breakfast[0]+ '(Green)';
 
+  image(brk[2], width*0.65, height*0.15, width*0.25, height*0.5);
+} else if (rotVar % 360 > 190 && rotVar % 360 <= 250) {
+  result = Breakfast[1]+ '(Blue)';
 
-  if (rotVar % 360 <= 70) {
-    result = Breakfast[4]+ '(Red)';
-    image(brk[0], 40, 10, 110, 110);
-  } else if (rotVar % 360 > 70 && rotVar % 360 <= 130) {
-    result = Breakfast[5]+ '(Yellow)';
-    image(brk[1], 40, 10, 110, 110);
-  } else if (rotVar % 360 > 130 && rotVar % 360 <= 190) {
-    result = Breakfast[0]+ '(Green)';
+  image(brk[3], width*0.65, height*0.15, width*0.25, height*0.5);
+} else if (rotVar % 360 > 250 && rotVar % 360 <= 310) {
+  result = Breakfast[2]+ '(Purple)';
 
-    image(brk[2], 40, 10, 110, 110);
-  } else if (rotVar % 360 > 190 && rotVar % 360 <= 250) {
-    result = Breakfast[1]+ '(Blue)';
+  image(brk[4], width*0.65, height*0.15, width*0.25, height*0.5);
+} else if (rotVar % 360 > 310 && rotVar % 360 <= 370) {
+  result = Breakfast[3] + '(Violet)';
 
-    image(brk[3], 40, 10, 110, 110);
-  } else if (rotVar % 360 > 250 && rotVar % 360 <= 310) {
-    result = Breakfast[2]+ '(Purple)';
-
-    image(brk[4], 40, 10, 110, 110);
-  } else if (rotVar % 360 > 310 && rotVar % 360 <= 370) {
-    result = Breakfast[3] + '(Violet)';
-
-    image(brk[5], 40, 10, 110, 110);
-  }
-      console.log(result);
-  }
-
-
+  image(brk[5], width*0.65, height*0.15, width*0.25, height*0.5);
+}
+    console.log(result);
+}
 }
 //break fast
 function buttonPressed1() {
-  spinnerTime = int(random(2500,5000));
-  frameCheck = millis() + spinnerTime;
-  var myVar = setInterval(moveDial, 25);
-  setTimeout(function(){ clearInterval(myVar); }, spinnerTime);
+  let dnrButton = false;
+  let lnchButton = false;
+  let brkButton = true;
+
+
   //if blank = true (){}
 }
 // lunch
 function buttonPressed2() {
-  spinnerTime = int(random(2500,5000));
-  frameCheck = millis() + spinnerTime;
-  var myVar = setInterval(moveDial, 25);
-  setTimeout(function(){ clearInterval(myVar); }, spinnerTime);
+  let dnrButton = false;
+  let lnchButton = true;
+  let brkButton = false;
+  lunchWords();
 }
 //dinner
 function buttonPressed3() {
-  spinnerTime = int(random(2500,5000));
-  frameCheck = millis() + spinnerTime;
-  var myVar = setInterval(moveDial, 25);
-  setTimeout(function(){ clearInterval(myVar); }, spinnerTime);
+  let dnrButton = true;
+  let lnchButton = false;
+  let brkButton = false;
+  dinnerWords();
 }
 //spin
 function buttonPressed4() {
@@ -178,100 +198,101 @@ function moveDial() {
 
 //text
 function breakfastWords(){
+  if (brkButton = true) {
   push();
-  translate(width/2,height/2);
+  translate(width/3,height/2.25);
 rotate(30);
   text(Breakfast[0], 100 , 0);
   pop();
   push();
-  translate(width/2,height/2);
+  translate(width/3,height/2.25);
 rotate(90);
   text(Breakfast[1], 100 , 0);
   pop();
   push();
-  translate(width/2,height/2);
+  translate(width/3,height/2.25);
 rotate(150);
   text(Breakfast[2], 100 , 0);
   pop();
   push();
-  translate(width/2,height/2);
+  translate(width/3,height/2.25);
 rotate(210);
   text(Breakfast[3], 100 , 0);
   pop();
   push();
-  translate(width/2,height/2);
+  translate(width/3,height/2.25);
 rotate(270);
   text(Breakfast[4], 100 , 0);
   pop();
   push();
-  translate(width/2,height/2);
+  translate(width/3,height/2.25);
 rotate(330);
   text(Breakfast[5], 100 , 0);
   pop();
 }
+}
 
 function lunchWords(){
   push();
-  translate(width/2,height/2);
+  translate(width/3,height/2.25);
 rotate(30);
   text(Lunch[0], 100 , 0);
   pop();
   push();
-  translate(width/2,height/2);
+  translate(width/3,height/2.25);
 rotate(90);
   text(Lunch[1], 100 , 0);
   pop();
   push();
-  translate(width/2,height/2);
+  translate(width/3,height/2.25);
 rotate(150);
   text(Lunch[2], 100 , 0);
   pop();
   push();
-  translate(width/2,height/2);
+  translate(width/3,height/2.25);
 rotate(210);
   text(Lunch[3], 100 , 0);
   pop();
   push();
-  translate(width/2,height/2);
+  translate(width/3,height/2.25);
 rotate(270);
   text(Lunch[4], 100 , 0);
   pop();
   push();
-  translate(width/2,height/2);
+  translate(width/3,height/2.25);
 rotate(330);
   text(Lunch[5], 100 , 0);
   pop();
 }
 function dinnerWords(){
   push();
-  translate(width/2,height/2);
+  translate(width/3,height/2.25);
 rotate(30);
   text(Dinner[0], 100 , 0);
   pop();
   push();
-  translate(width/2,height/2);
+  translate(width/3,height/2.25);
 rotate(90);
   text(Dinner[1], 100 , 0);
   pop();
   push();
-  translate(width/2,height/2);
+  translate(width/3,height/2.25);
 rotate(150);
   text(Dinner[2], 100 , 0);
   pop();
   push();
-  translate(width/2,height/2);
+  translate(width/3,height/2.25);
 rotate(210);
   text(Dinner[3], 100 , 0);
   pop();
   push();
-  translate(width/2,height/2);
+  translate(width/3,height/2.25);
 rotate(270);
   text(Dinner[4], 100 , 0);
   pop();
   push();
-  translate(width/2,height/2);
+  translate(width/3,height/2.25);
 rotate(330);
   text(Dinner[5], 100 , 0);
   pop();
-
 }
