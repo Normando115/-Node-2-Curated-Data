@@ -9,6 +9,8 @@ let dnr = []
 let dnrButton = false;
 let lnchButton = false;
 let brkButton = false;
+let myFont;
+let wheel;
 
 
 let Breakfast = ['Try Again', 'Eat Out', 'Cereal', 'PBJ', 'Eggs and Bacon', 'Ramen'];
@@ -18,6 +20,7 @@ let Dinner = ['Ramen', 'Fried Rice', 'Spaghetti', 'Curry', 'something new', 'Try
 
 words = [Breakfast, Lunch, Dinner];
 function preload() {
+  myFont = loadFont('Assets/AnnieUseYourTelescope-Regular.ttf');
   for (var i = 0; i < 8; i++) {
     brk[i] = loadImage("Assets/Food" + i + ".jpg");
   }
@@ -32,34 +35,32 @@ function preload() {
 console.log(words);
 
 function setup() {
+    song = loadSound('assets/prizewheel.wav');
 let canvas = createCanvas(windowWidth*.989, (windowWidth/2));
 canvas.parent('myCanvas');
 //  createCanvas(585,585);
   image(brk[0], width/3, height/3, width/2,height/3);
   angleMode(DEGREES);
   frameRate(60);
+  textFont(myFont);
 //Buttons
   buttonSpin = createButton('Spin!');
   buttonSpin.parent('button-holder');
   buttonSpin.size(width*0.1,height*0.05);
   buttonSpin.position(width*0.75,height*0.85);
-  buttonSpin.mousePressed(buttonPressed4);
+  buttonSpin.mousePressed(SpinButton);
 
-    buttonBreakfast = createButton('Breakfast');
-  buttonBreakfast.parent('button-holder');
-    buttonBreakfast.size(width*0.05,height*0.025);
-  buttonBreakfast.position(width*0.2,height*0.875);
-  buttonBreakfast.mousePressed(buttonPressed1);
-      buttonLunch = createButton('Lunch');
-  buttonLunch.parent('button-holder');
-    buttonLunch.size(width*0.05,height*0.025);
-  buttonLunch.position(width*0.125,height*0.875);
-  buttonLunch.mousePressed(buttonPressed2);
-      buttonDinner = createButton('Dinner');
-  buttonDinner.parent('button-holder');
-    buttonDinner.size(width*0.05,height*0.025);
-  buttonDinner.position(width*0.05,height*0.875);
-  buttonDinner.mousePressed(buttonPressed3);
+//    buttonBreakfast = createButton('Breakfast');
+//  buttonBreakfast.parent('button-holder');
+//    buttonBreakfast.size(width*0.05,height*0.025);
+//  buttonBreakfast.position(width*0.2,height*0.875);
+//  buttonBreakfast.mousePressed(BreakfastButton);
+//  buttonLunch.mousePressed(LunchButton);
+//      buttonDinner = createButton('Dinner');
+//  buttonDinner.parent('button-holder');
+//    buttonDinner.size(width*0.05,height*0.025);
+//  buttonDinner.position(width*0.05,height*0.875);
+//  buttonDinner.mousePressed(DinnerButton);
 
 }
 function draw() {
@@ -107,7 +108,7 @@ pop();
   //  image(brk[5], 40, 10, 110, 110);
     pop();
 
-
+//fontSize();
   breakfastWords();//
   //lunchWords();
 //dinnerWords();
@@ -119,27 +120,27 @@ text(result,width*0.775, height*0.75);
 pop();
 
 //dinner
-if(buttonPressed1){
+if(BreakfastButton){
 
-if (rotVar % 360 <= 70) {
+if (rotVar % 360 <= 60) {
   result = Breakfast[4]+ '(Red)';
   image(brk[0], width*0.65, height*0.15, width*0.25, height*0.5);
-} else if (rotVar % 360 > 70 && rotVar % 360 <= 130) {
+} else if (rotVar % 360 > 60 && rotVar % 360 <= 120) {
   result = Breakfast[5]+ '(Yellow)';
   image(brk[1], width*0.65, height*0.15, width*0.25, height*0.5);
-} else if (rotVar % 360 > 130 && rotVar % 360 <= 190) {
+} else if (rotVar % 360 > 120 && rotVar % 360 <= 180) {
   result = Breakfast[0]+ '(Green)';
 
   image(brk[2], width*0.65, height*0.15, width*0.25, height*0.5);
-} else if (rotVar % 360 > 190 && rotVar % 360 <= 250) {
+} else if (rotVar % 360 > 180 && rotVar % 360 <= 240) {
   result = Breakfast[1]+ '(Blue)';
 
   image(brk[3], width*0.65, height*0.15, width*0.25, height*0.5);
-} else if (rotVar % 360 > 250 && rotVar % 360 <= 310) {
+} else if (rotVar % 360 > 250 && rotVar % 360 <= 300) {
   result = Breakfast[2]+ '(Purple)';
 
   image(brk[4], width*0.65, height*0.15, width*0.25, height*0.5);
-} else if (rotVar % 360 > 310 && rotVar % 360 <= 370) {
+} else if (rotVar % 360 > 300 && rotVar % 360 <= 360) {
   result = Breakfast[3] + '(Violet)';
 
   image(brk[5], width*0.65, height*0.15, width*0.25, height*0.5);
@@ -148,34 +149,30 @@ if (rotVar % 360 <= 70) {
 }
 }
 //break fast
-function buttonPressed1() {
-  let dnrButton = false;
-  let lnchButton = false;
-  let brkButton = true;
-
+function BreakfastButton() {
+breakfastWords();
 
   //if blank = true (){}
 }
 // lunch
-function buttonPressed2() {
-  let dnrButton = false;
-  let lnchButton = true;
-  let brkButton = false;
-  lunchWords();
+function LunchButton() {
+lunchWords();
 }
 //dinner
-function buttonPressed3() {
+function DinnerButton() {
   let dnrButton = true;
   let lnchButton = false;
   let brkButton = false;
-  dinnerWords();
+dinnerWords();
 }
 //spin
-function buttonPressed4() {
-  spinnerTime = int(random(2500,5000));
+function SpinButton() {
+  spinnerTime = int(random(3000,5000));
   frameCheck = millis();
   var myVar = setInterval(moveDial, 25);
   setTimeout(function(){ clearInterval(myVar); }, spinnerTime);
+    song.play();
+
 }
 
 

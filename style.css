@@ -1,7 +1,26 @@
 html, body {
   margin: 0;
   padding: 0;
+  fill(50)
+  font-family: 'AnnieUseYourTelescope-Regular';
+  background: #000000;
+
+
 }
 canvas {
   display: block;
+}
+button {
+  font-family: 'AnnieUseYourTelescope-Regular';
+  font-weight: bolder;
+  font-size: large;
+  margin: auto;
+  display: block;
+  text-align: center;
+  border-radius: 50%;
+}
+
+div.info_box {
+  padding-left: 33%;
+  padding-right: 33%;
 }
