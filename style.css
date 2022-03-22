@@ -4,6 +4,7 @@ html, body {
   fill(50)
   font-family: 'AnnieUseYourTelescope-Regular';
   background: #000000;
+  textSize(24);
 
 
 }
