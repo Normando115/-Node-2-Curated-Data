@@ -12,20 +12,20 @@ let mealType = "breakfast";
 
 
 let Breakfast = ['Try Again', 'Eat Out', 'Cereal', 'PBJ', 'Eggs and Bacon', 'Ramen'];
-let Lunch = ['Ramen', 'Fried Rice', 'Spaghetti', 'Curry', ' something new', 'Try again'];
-let Dinner = ['Pizza', 'Indian', 'Hot Pot', 'KBBQ', 'Fast Food', 'Starve', 'All you can eat'];
+let Lunch = ['Ramen', 'Fried Rice', 'Spaghetti', 'Curry', ' Popcorn chicken', 'Potato Wedge'];
+let Dinner = ['Pizza', 'Indian', 'Hot Pot', 'KBBQ', 'Fast Food', 'Starve'];
 //visible = false;
 function preload() {
   myFont = loadFont('Assets/AnnieUseYourTelescope-Regular.ttf');
-  for (var i = 0; i < 8; i++) {
-    brk[i] = loadImage("Assets/Food" + i + ".jpg");
+  for (var i = 0; i < 6; i++) {
+    brk[i] = loadImage("Assets/Breakfast" + i + ".jpg");
   }
-  //   for (var i = 0; i < 7; i++) {
-  // lch[i] = loadImage("Assets/Food1" + i + ".jpg");
-  //}
-  // for (var i = 0; i < 7; i++) {
-  //dnr[i] = loadImage("Assets/Food2" + i + ".jpg");
-  // }
+     for (var i = 0; i < 6; i++) {
+   lch[i] = loadImage("Assets/Lunch" + i + ".jpg");
+  }
+   for (var i = 0; i < 6; i++) {
+  dnr[i] = loadImage("Assets/Dinner" + i + ".jpg");
+   }
 
 }
 
@@ -68,7 +68,15 @@ function setup() {
 }
 
 function draw() {
-  background(0);
+  background(50);
+
+  push();
+  noStroke();
+  fill(25, 22, 160);
+  rect(width*0, height*0.8, width*1, height*1);
+  fill(100);
+  rect(width*0.63725, height*0.125, width*0.275, height*0.55)
+pop();
   //add artist statement into read me txt
   //Text
   push();
@@ -81,8 +89,13 @@ function draw() {
   //Spinner
   push();
   translate(width / 3, height / 2.25);
+fill(200);
+  triangle(width*-0.1,height*0.4,width*0,height*0.2,width*0.1,height*0.4);
+ellipse(0,0, width/2.85);
+
+
   fill(255);
-  ellipse(0, 0, width / 3)
+  ellipse(0, 0, width / 3);
   fill(56, 222, 27);
   arc(0, 0, width / 3, height / 1.5, 28, 88);
   fill(23, 108, 212);
@@ -106,16 +119,7 @@ function draw() {
   rect(0, 0, 20, 100);
   triangle(0, -60, -20, -40, 20, -40)
   pop();
-  push();
-  textSize(50)
-  translate(width / 3, height / 3);
-  //  image(brk[5], 40, 10, 110, 110);
-  pop();
 
-  //fontSize();
-  //  breakfastWords();
-  //lunchWords();
-  //dinnerWords();
   push();
   fill(255);
   textSize(32);
@@ -159,60 +163,54 @@ function draw() {
       }
       console.log(result);
     }
-  } else if (mealType == "lunch") {
+   else if (mealType == "lunch") {
     if (rotVar % 360 <= 60) {
-      result = Breakfast[4] + '(Red)';
-      image(brk[0], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
+      result = Lunch[4] + '(Red)';
+      image(lch[4], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
     } else if (rotVar % 360 > 60 && rotVar % 360 <= 120) {
-      result = Breakfast[5] + '(Yellow)';
-      image(brk[1], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
+      result = Lunch[5] + '(Yellow)';
+      image(lch[5], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
     } else if (rotVar % 360 > 120 && rotVar % 360 <= 180) {
-      result = Breakfast[0] + '(Green)';
-
-      image(brk[2], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
+      result = Lunch[0] + '(Green)';
+      image(lch[0], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
     } else if (rotVar % 360 > 180 && rotVar % 360 <= 240) {
-      result = Breakfast[1] + '(Blue)';
-
-      image(brk[3], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
+      result = Lunch[1] + '(Blue)';
+      image(lch[1], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
     } else if (rotVar % 360 > 250 && rotVar % 360 <= 300) {
-      result = Breakfast[2] + '(Purple)';
-
-      image(brk[4], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
+      result = Lunch[2] + '(Purple)';
+      image(lch[2], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
     } else if (rotVar % 360 > 300 && rotVar % 360 <= 360) {
-      result = Breakfast[3] + '(Violet)';
-
-      image(brk[5], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
+      result = Lunch[3] + '(Violet)';
+      image(lch[3], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
     }
     console.log(result);
-    console.log("i am lunch");
   } else if (mealType == "dinner") {
     if (rotVar % 360 <= 60) {
-      result = Breakfast[4] + '(Red)';
-      image(brk[0], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
+      result = Dinner[4] + '(Red)';
+      image(dnr[4], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
     } else if (rotVar % 360 > 60 && rotVar % 360 <= 120) {
-      result = Breakfast[5] + '(Yellow)';
-      image(brk[1], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
+      result = Dinner[5] + '(Yellow)';
+      image(dnr[5], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
     } else if (rotVar % 360 > 120 && rotVar % 360 <= 180) {
-      result = Breakfast[0] + '(Green)';
+      result = Dinner[0] + '(Green)';
 
-      image(brk[2], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
+      image(dnr[0], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
     } else if (rotVar % 360 > 180 && rotVar % 360 <= 240) {
-      result = Breakfast[1] + '(Blue)';
+      result = Dinner[1] + '(Blue)';
 
-      image(brk[3], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
+      image(dnr[1], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
     } else if (rotVar % 360 > 250 && rotVar % 360 <= 300) {
-      result = Breakfast[2] + '(Purple)';
+      result = Dinner[2] + '(Purple)';
 
-      image(brk[4], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
+      image(dnr[2], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
     } else if (rotVar % 360 > 300 && rotVar % 360 <= 360) {
-      result = Breakfast[3] + '(Violet)';
+      result = Dinner[3] + '(Violet)';
 
-      image(brk[5], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
+      image(dnr[3], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
     }
     console.log(result);
-    console.log("i am dinner");
   }
-
+}
 
 }
 //end of draw function
@@ -301,32 +299,32 @@ function lunchWords() {
   push();
   translate(width / 3, height / 2.25);
   rotate(60);
-  text(Breakfast[0], 100, 0);
+  text(Lunch[0], 100, 0);
   pop();
   push();
   translate(width / 3, height / 2.25);
   rotate(120);
-  text(Breakfast[1], 100, 0);
+  text(Lunch[1], 100, 0);
   pop();
   push();
   translate(width / 3, height / 2.25);
   rotate(180);
-  text(Breakfast[2], 100, 0);
+  text(Lunch[2], 100, 0);
   pop();
   push();
   translate(width / 3, height / 2.25);
   rotate(240);
-  text(Breakfast[3], 100, 0);
+  text(Lunch[3], 100, 0);
   pop();
   push();
   translate(width / 3, height / 2.25);
   rotate(300);
-  text(Breakfast[4], 100, 0);
+  text(Lunch[4], 100, 0);
   pop();
   push();
   translate(width / 3, height / 2.25);
   rotate(360);
-  text(Breakfast[5], 100, 0);
+  text(Lunch[5], 100, 0);
   pop();
 
 }
@@ -335,32 +333,32 @@ function dinnerWords() {
   push();
   translate(width / 3, height / 2.25);
   rotate(60);
-  text(Breakfast[0], 100, 0);
+  text(Dinner[0], 100, 0);
   pop();
   push();
   translate(width / 3, height / 2.25);
   rotate(120);
-  text(Breakfast[1], 100, 0);
+  text(Dinner[1], 100, 0);
   pop();
   push();
   translate(width / 3, height / 2.25);
   rotate(180);
-  text(Breakfast[2], 100, 0);
+  text(Dinner[2], 100, 0);
   pop();
   push();
   translate(width / 3, height / 2.25);
   rotate(240);
-  text(Breakfast[3], 100, 0);
+  text(Dinner[3], 100, 0);
   pop();
   push();
   translate(width / 3, height / 2.25);
   rotate(300);
-  text(Breakfast[4], 100, 0);
+  text(Dinner[4], 100, 0);
   pop();
   push();
   translate(width / 3, height / 2.25);
   rotate(360);
-  text(Breakfast[5], 100, 0);
+  text(Dinner[5], 100, 0);
   pop();
 
 }
