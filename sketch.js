@@ -139,25 +139,25 @@ ellipse(0,0, width/2.85);
   if (SpinButton) {
     if (mealType == "breakfast") {
       if (rotVar % 360 <= 60) {
-        result = Breakfast[4] + '(Red)';
+        result = Breakfast[4];
         image(brk[0], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
       } else if (rotVar % 360 > 60 && rotVar % 360 <= 120) {
-        result = Breakfast[5] + '(Yellow)';
+        result = Breakfast[5];
         image(brk[1], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
       } else if (rotVar % 360 > 120 && rotVar % 360 <= 180) {
-        result = Breakfast[0] + '(Green)';
+        result = Breakfast[0];
 
         image(brk[2], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
       } else if (rotVar % 360 > 180 && rotVar % 360 <= 240) {
-        result = Breakfast[1] + '(Blue)';
+        result = Breakfast[1];
 
         image(brk[3], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
       } else if (rotVar % 360 > 250 && rotVar % 360 <= 300) {
-        result = Breakfast[2] + '(Purple)';
+        result = Breakfast[2];
 
         image(brk[4], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
       } else if (rotVar % 360 > 300 && rotVar % 360 <= 360) {
-        result = Breakfast[3] + '(Violet)';
+        result = Breakfast[3];
 
         image(brk[5], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
       }
@@ -165,46 +165,46 @@ ellipse(0,0, width/2.85);
     }
    else if (mealType == "lunch") {
     if (rotVar % 360 <= 60) {
-      result = Lunch[4] + '(Red)';
+      result = Lunch[4];
       image(lch[4], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
     } else if (rotVar % 360 > 60 && rotVar % 360 <= 120) {
-      result = Lunch[5] + '(Yellow)';
+      result = Lunch[5];
       image(lch[5], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
     } else if (rotVar % 360 > 120 && rotVar % 360 <= 180) {
-      result = Lunch[0] + '(Green)';
+      result = Lunch[0];
       image(lch[0], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
     } else if (rotVar % 360 > 180 && rotVar % 360 <= 240) {
-      result = Lunch[1] + '(Blue)';
+      result = Lunch[1];
       image(lch[1], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
     } else if (rotVar % 360 > 250 && rotVar % 360 <= 300) {
-      result = Lunch[2] + '(Purple)';
+      result = Lunch[2];
       image(lch[2], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
     } else if (rotVar % 360 > 300 && rotVar % 360 <= 360) {
-      result = Lunch[3] + '(Violet)';
+      result = Lunch[3];
       image(lch[3], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
     }
     console.log(result);
   } else if (mealType == "dinner") {
     if (rotVar % 360 <= 60) {
-      result = Dinner[4] + '(Red)';
+      result = Dinner[4];
       image(dnr[4], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
     } else if (rotVar % 360 > 60 && rotVar % 360 <= 120) {
-      result = Dinner[5] + '(Yellow)';
+      result = Dinner[5];
       image(dnr[5], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
     } else if (rotVar % 360 > 120 && rotVar % 360 <= 180) {
-      result = Dinner[0] + '(Green)';
+      result = Dinner[0];
 
       image(dnr[0], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
     } else if (rotVar % 360 > 180 && rotVar % 360 <= 240) {
-      result = Dinner[1] + '(Blue)';
+      result = Dinner[1];
 
       image(dnr[1], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
     } else if (rotVar % 360 > 250 && rotVar % 360 <= 300) {
-      result = Dinner[2] + '(Purple)';
+      result = Dinner[2];
 
       image(dnr[2], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
     } else if (rotVar % 360 > 300 && rotVar % 360 <= 360) {
-      result = Dinner[3] + '(Violet)';
+      result = Dinner[3];
 
       image(dnr[3], width * 0.65, height * 0.15, width * 0.25, height * 0.5);
     }
