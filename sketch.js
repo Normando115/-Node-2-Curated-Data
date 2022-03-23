@@ -77,8 +77,6 @@ function draw() {
   fill(200);
   rect(width*0.63725, height*0.125, width*0.275, height*0.55)
 pop();
-  //add artist statement into read me txt
-  //Text
   push();
   fill(0);
   textSize(48);
