@@ -68,19 +68,19 @@ function setup() {
 }
 
 function draw() {
-  background(50);
+  background(255);
 
   push();
   noStroke();
-  fill(25, 22, 160);
+  fill(156, 87, 23);
   rect(width*0, height*0.8, width*1, height*1);
-  fill(100);
+  fill(200);
   rect(width*0.63725, height*0.125, width*0.275, height*0.55)
 pop();
   //add artist statement into read me txt
   //Text
   push();
-  fill(255);
+  fill(0);
   textSize(48);
   text('Food Randomizer', width / 2.5, height * 0.075);
   pop();
@@ -121,7 +121,7 @@ ellipse(0,0, width/2.85);
   pop();
 
   push();
-  fill(255);
+  fill(0);
   textSize(32);
   textAlign(CENTER);
   text(result, width * 0.775, height * 0.75);
